@@ -1,1 +1,34 @@
-<p>home works!</p>
+<h1>Welcome!</h1>
+<div class="play-container">
+    <p>You've clicked<span (click)="countClick()">this</span>{{ clickCounter }} times.</p>
+</div>
+
+
+<div class="play-container">
+    <p>
+        <input type="text" [(ngModel)]="name">
+        <br>
+        <strong>You said:</strong> {{ name }}
+    </p>
+</div>
+  <!--Style Binding 
+      (1) is two options
+      (2) has multiple using ngStyle can have many
+  -->
+  <!-- <div class="play-container" [style.background-color]="clickCounter > 4 ? 'yellow': 'lightgray'"> -->
+  <!-- <div class="play-container" [ngStyle]="{
+  'background-color' : clickCounter > 4 ? 'yellow': 'grey',
+  'border': clickCounter > 4 ? '4px solid black': 'none'
+  }"> -->
+  <!-- Class Binding -->
+  <!-- <div class="play-container"[class.active]="clickCounter > 4"> -->
+  <div class="play-container"[ngClass]="setClasses()">
+  <ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none">
+    <p>The click counter <strong> IS GREATER </strong>than 4.</p>
+  </ng-template>
+
+  <ng-template #none>
+      <p>The click counter is <strong>not greater</strong>than 4.</p>
+  </ng-template>
+
+</div>
